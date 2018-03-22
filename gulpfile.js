@@ -3,34 +3,38 @@ var gulp = require('gulp'),
     iconfont = require('gulp-iconfont'),
     consolidate = require('gulp-consolidate');
 
+const
+    iconFontName = "wg-iconfont",
+    className = "wgi";
+
 gulp.task('iconfont', function () {
     gulp.src('icons/**/*.svg')
         .pipe(iconfont({
-            fontName: 'my-iconfont',
+            fontName: iconFontName,
             centerHorizontally: true,
             normalize: true,
             prependUnicode: true,
             fontHeight: 1001,
-            format: ['ttf', 'eot', 'woff', 'off2']
+            format: ['ttf', 'eot', 'woff']
         }))
         .on('glyphs', function (glyphs) {
             gulp.src('scss/templates/_icons.scss')
                 .pipe(consolidate('lodash', {
                     glyphs: glyphs,
-                    fontName: 'my-iconfont',
-                    fontPath: '../fonts/iconfont/',
-                    className: 'my-icon'
+                    fontName: iconFontName,
+                    fontPath: '../fonts/' + iconFontName,
+                    className: className
                 }))
                 .pipe(gulp.dest('scss'));
         })
-        .pipe(gulp.dest('fonts/iconfont'));
+        .pipe(gulp.dest('fonts/' + iconFontName));
 });
 
 gulp.task('sass', function () {
     gulp.src('scss/**/*.scss')
         .pipe(sass({
-            indentWidth: 4
-            , outputStyle: 'expanded'
+            indentWidth: 4,
+            outputStyle: 'expanded'
         }))
         .pipe(gulp.dest('css'));
 });

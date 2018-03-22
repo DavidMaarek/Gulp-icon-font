@@ -1,18 +1,17 @@
 @font-face {
-  font-family: 'my-iconfont';
+  font-family: 'wg-iconfont';
   font-weight: normal;
   font-style: normal;
-  src: url('../fonts/iconfont/my-iconfont.eot');
-  src: url('../fonts/iconfont/my-iconfont.woff2') format('woff2'),
-  url('../fonts/iconfont/my-iconfont.woff') format('woff'),
-  url('../fonts/iconfont/my-iconfont.ttf') format('truetype'),
-  url('../fonts/iconfont/my-iconfont.eot?#iefix') format('embedded-opentype');
+  src: url('../fonts/wg-iconfont/wg-iconfont.eot');
+  src: url('../fonts/wg-iconfont/wg-iconfont.woff') format('woff'),
+  url('../fonts/wg-iconfont/wg-iconfont.ttf') format('truetype'),
+  url('../fonts/wg-iconfont/wg-iconfont.eot?#iefix') format('embedded-opentype');
 }
 
-.my-icon[class^="my-icon-"],
-.my-icon[class*=" my-icon-"] {
+.wgi[class^="wgi-"],
+.wgi[class*=" wgi-"] {
   display: inline-block;
-  font-family: 'my-iconfont';
+  font-family: 'wg-iconfont';
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   font-style: normal;
@@ -23,11 +22,13 @@
 }
 
 $icons: (
-pin: '\EA01'
+pin: '\EA01',
+    headset: '\EA02',
+    tools: '\EA03'
 );
 
 @each $name, $icon in $icons {
-  .my-icon-#{$name}:before {
+  .wgi-#{$name}:before {
   content: $icon;
 }
 }
