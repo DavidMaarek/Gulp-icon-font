@@ -9,7 +9,7 @@ $ npm install
 ```
 
 ## Gulpfile
-In the gulpfile.js you can set the name of your font, which will be used for the name of the folder, the name of the font and the name of classes.
+In the gulpfile.js you can set the name of your font and the name of your css class. The name of your font will be used for the name of the folder and the name of the font.
 
 ## Icons
 Place your .svg icons in the "icons" folder
