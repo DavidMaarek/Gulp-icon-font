@@ -2,3 +2,5 @@
 node_modules/
 fonts/
 css/
+scss/_icons.scss
+icons/
