@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title><%= iconFontName %></title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <h1><%= iconFontName %></h1>
+
+    <ul class="glyphs">
+        <% _.each(glyphs, function(glyph) { %>
+            <li>
+                <i class="<%= className %> <%= className %>-<%= glyph.name %> <%= className %>-3x"></i>
+                <span><%= glyph.name %> (\<%= glyph.codepoint.toString(16).toUpperCase() %>)</span>
+            </li>
+            <hr>
+        <% }); %>
+    </ul>
+</body>
+</html>
