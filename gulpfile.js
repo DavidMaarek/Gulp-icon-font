@@ -1,4 +1,4 @@
-var gulp = require('gulp'),
+const gulp = require('gulp'),
     sass = require('gulp-sass'),
     sassUnicode = require('gulp-sass-unicode'),
     iconfont = require('gulp-iconfont'),
@@ -19,6 +19,12 @@ gulp.task('iconfont', function () {
             format: ['ttf', 'eot', 'woff']
         }))
         .on('glyphs', function (glyphs) {
+            const options = {
+                className,
+                iconFontName,
+                fontPath: '../fonts/', // set path to font (from your CSS file if relative)
+                glyphs: glyphs.map(mapGlyphs)
+            };
             gulp.src('scss/templates/_icons.scss')
                 .pipe(consolidate('lodash', {
                     glyphs: glyphs,
@@ -27,9 +33,21 @@ gulp.task('iconfont', function () {
                     className: className
                 }))
                 .pipe(gulp.dest('scss'));
+
+        // if you don't need sample.html, remove next 4 lines
+        gulp.src('templates/index.html')
+            .pipe(consolidate('lodash', options))
+            .pipe(gulp.dest('./')) // set path to export your sample HTML
         })
         .pipe(gulp.dest('fonts/' + iconFontName));
 });
+
+/**
+ * This is needed for mapping glyphs and codepoints.
+ */
+function mapGlyphs (glyph) {
+    return { name: glyph.name, codepoint: glyph.unicode[0].charCodeAt(0) }
+}
 
 gulp.task('sass', function () {
     gulp.src('scss/**/*.scss')
@@ -41,4 +59,4 @@ gulp.task('sass', function () {
         .pipe(gulp.dest('css'));
 });
 
-gulp.task('default', ['sass']);
+gulp.task('default', ['iconfont', 'sass']);

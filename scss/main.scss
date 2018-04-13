@@ -1,5 +1,18 @@
 @import "icons";
 
-body{
+h1 {
   text-align: center;
+}
+
+ul.glyphs {
+  list-style: none;
+
+  li {
+    display: flex;
+    align-items: center;
+
+    i {
+      margin-right: 15px;
+    }
+  }
 }

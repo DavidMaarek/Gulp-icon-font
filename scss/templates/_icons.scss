@@ -19,6 +19,18 @@
   font-weight: normal;
   line-height: 1;
   text-transform: none;
+
+  &.<%= className %>-2x {
+    font-size: 2em;
+  }
+
+  &.<%= className %>-3x {
+  font-size: 3em;
+}
+
+  &.<%= className %>-4x {
+  font-size: 4em;
+}
 }
 
 $icons: (
