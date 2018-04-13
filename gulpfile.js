@@ -1,5 +1,6 @@
 var gulp = require('gulp'),
     sass = require('gulp-sass'),
+    sassUnicode = require('gulp-sass-unicode'),
     iconfont = require('gulp-iconfont'),
     consolidate = require('gulp-consolidate');
 
@@ -36,6 +37,7 @@ gulp.task('sass', function () {
             indentWidth: 4,
             outputStyle: 'expanded'
         }))
+        .pipe(sassUnicode())
         .pipe(gulp.dest('css'));
 });
 
