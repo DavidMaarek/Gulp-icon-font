@@ -17,14 +17,9 @@ Place your .svg icons in the "icons" folder
 ### Generate your font
 In the gulpfile.js there are two tasks, the first "iconfont" will allow to create the font files, and the second one "sass" will compile the scss files in css.
 
-Run this one first
+Just run this command, who excecute a default task who run iconfont then sass
 ```
-$ gulp iconfont
-```
-
-And this one in second
-```
-$ gulp sass
+$ gulp
 ```
 
 ## How to display icons?
