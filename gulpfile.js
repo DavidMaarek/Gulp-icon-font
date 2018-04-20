@@ -2,14 +2,15 @@ const gulp = require('gulp'),
     sass = require('gulp-sass'),
     sassUnicode = require('gulp-sass-unicode'),
     iconfont = require('gulp-iconfont'),
-    consolidate = require('gulp-consolidate');
+    consolidate = require('gulp-consolidate'),
+    runSequence = require('run-sequence');
 
 const
     iconFontName = "wg-iconfont",
     className = "wgi";
 
 gulp.task('iconfont', function () {
-    gulp.src('icons/**/*.svg')
+    return gulp.src('icons/**/*.svg')
         .pipe(iconfont({
             fontName: iconFontName,
             centerHorizontally: true,
@@ -50,13 +51,15 @@ function mapGlyphs (glyph) {
 }
 
 gulp.task('sass', function () {
-    gulp.src('scss/**/*.scss')
+    return gulp.src('scss/**/*.scss')
         .pipe(sass({
-            indentWidth: 4,
+            indentWidth: 2,
             outputStyle: 'expanded'
         }))
         .pipe(sassUnicode())
         .pipe(gulp.dest('css'));
 });
 
-gulp.task('default', ['iconfont', 'sass']);
+gulp.task('default', function (callBack) {
+  runSequence('iconfont', 'sass', callBack);
+});
